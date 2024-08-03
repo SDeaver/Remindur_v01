@@ -1,9 +1,10 @@
 import { monthNames } from '../localization/MonthNames';
 
-function addMonth(month) {
+function addMonth(monthName, monthNum) {
 
    let newMonth = {
-      key: month
+      key: monthName,
+      monthNum: monthNum
    }
 
    return [ newMonth ];

@@ -1,5 +1,5 @@
 export const monthNames = [
-   'Empty',
+   '---',
    'January',
    'February',
    'March',

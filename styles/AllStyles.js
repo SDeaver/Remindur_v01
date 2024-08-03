@@ -26,12 +26,6 @@ export const allStyles = StyleSheet.create ({
       backgroundColor: colors.listBG,
       // borderWidth: 3,
    },
-   extraBorder: {
-      position: 'absolute',
-      height:'80%',
-      width: '80%',
-      borderWidth: 3,
-   },
    eventCard: {
       borderWidth: 1,
       backgroundColor: 'white',
@@ -41,7 +35,15 @@ export const allStyles = StyleSheet.create ({
    monthTitle: {
       marginTop: 10,
       marginLeft: 10,
-   }
+   },
+   yearBreak: {
+      height: 2,
+      width: '80%',
+      alignSelf: 'center',
+      marginTop: 30,
+      marginBottom: 20,
+      backgroundColor: colors.text,
+   },
 
 });
 
