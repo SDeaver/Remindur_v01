@@ -44,6 +44,11 @@ export const allStyles = StyleSheet.create ({
       marginBottom: 20,
       backgroundColor: colors.text,
    },
+   toggleButton: {
+      height: 50,
+      width: 100,
+      backgroundColor: 'black'
+   },
 
 });
 

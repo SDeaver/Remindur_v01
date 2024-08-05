@@ -10,4 +10,14 @@ function addMonth(monthName, monthNum) {
    return [ newMonth ];
 }
 
-export const monthArray = monthNames.map(addMonth);
+function getMonthNamesArray() {
+
+   let newMonthNamesArray = [];
+
+   newMonthNamesArray = monthNames.map(addMonth);
+
+   return newMonthNamesArray;
+   
+}
+
+export const monthArray = getMonthNamesArray();

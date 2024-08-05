@@ -1,5 +1,5 @@
 import { Pressable, FlatList } from 'react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import initData from './components/InitData';
 import EventCard from './components/EventCard';
@@ -10,19 +10,26 @@ import { allStyles } from './styles/AllStyles';
 
 export default function App() {
    
-   const [sortedData, setSortedData] = useState([initData()]);
+   const [sortedData, setSortedData] = useState(null);
    const [hiddenMonths, setHiddenMonths] = useState([]);
+   const [toggleToForceFlatListRender, setToggleToForceFlastListRender] = useState(true);
 
+   useEffect (() => {
+   
+      if (sortedData === null) {
+         let newDataArray = initData();
+         setSortedData(newDataArray);
+      }     
+      
+   }, [])
 
+   
    function displayNextEvent(item) {
 
-      console.log('display: ' + JSON.stringify(item));
-
       // check if hidden
-      // if (hiddenMonths.indexOf(item.dateMonth) !== -1) {
-      //    console.log('hidden: ' + JSON.stringify(item));
-      //    return (<></>);
-      // }
+      if (hiddenMonths.indexOf(item.dateMonth) !== -1) {
+         return (<></>);
+      }
 
       // determine what kind of component to return
       if (item.name) {
@@ -40,22 +47,23 @@ export default function App() {
 
    function toggleHideMonth(month) {
 
-      // let newArray = hiddenMonths;                                            
-      // let position = newArray.indexOf(month);
+      let newHiddenArray = hiddenMonths;                                            
+      let position = newHiddenArray.indexOf(month);
 
-      // if (position === -1) {
-      //    newArray.push(month);
-      //    console.log('hidden: ' + month);
-      // }
-      // else {
-      //    newArray.splice(position,1);
-      //    console.log('unhidden: ' + month);
-      // }
+      if (position === -1) {
+         newHiddenArray.push(month);
+      }
+      else {
+         newHiddenArray.splice(position,1);
+      }
 
-      // console.log('hidden months: ' + newArray);
-      // setHiddenMonths(newArray);
+      setHiddenMonths(newHiddenArray);
+      forceFlatListRender();
 
-      setHiddenMonths([1]);
+   }
+
+   function forceFlatListRender() {
+      setToggleToForceFlastListRender(!toggleToForceFlatListRender);
    }
 
    return (
@@ -63,7 +71,6 @@ export default function App() {
 
         <FlatList
             data={sortedData}
-            extraData={hiddenMonths}
             style={allStyles.listContainer}
             renderItem={({ item }) => (
                displayNextEvent(item)
@@ -71,6 +78,7 @@ export default function App() {
          />
 
       </Pressable>
+      
    );
 
 }
