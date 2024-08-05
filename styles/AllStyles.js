@@ -44,10 +44,19 @@ export const allStyles = StyleSheet.create ({
       marginBottom: 20,
       backgroundColor: colors.text,
    },
-   toggleButton: {
+   initButton: {
       height: 50,
       width: 100,
-      backgroundColor: 'black'
+      marginTop: 20,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'ghostwhite',
+      borderWidth: 1,
+   },
+   buttonView: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent:'space-between',
    },
 
 });
