@@ -10,11 +10,21 @@ import { allStyles } from './styles/AllStyles';
 
 export default function App() {
    
-   const [sortedData, setSortedData] = useState(initData());
+   const [sortedData, setSortedData] = useState([initData()]);
+   const [hiddenMonths, setHiddenMonths] = useState([]);
 
 
    function displayNextEvent(item) {
 
+      console.log('display: ' + JSON.stringify(item));
+
+      // check if hidden
+      // if (hiddenMonths.indexOf(item.dateMonth) !== -1) {
+      //    console.log('hidden: ' + JSON.stringify(item));
+      //    return (<></>);
+      // }
+
+      // determine what kind of component to return
       if (item.name) {
          return (<EventCard myEvent={item} />);
          
@@ -26,20 +36,26 @@ export default function App() {
          return ( <MonthTitle monthName={item.key} monthNum={item.monthNum} toggleHide={toggleHideMonth} /> );
       }
 
-   }
+   } 
 
    function toggleHideMonth(month) {
-      console.log('toggle month hidden: ' + month);
 
-      let newArray = sortedData;
+      // let newArray = hiddenMonths;                                            
+      // let position = newArray.indexOf(month);
 
-      for (let i = 0; i < newArray.length; i++) {
-         if(newArray[i].dateMonth === month) {
-            console.log('should hide: ' + JSON.stringify(newArray[i]));
-         }
-      }
+      // if (position === -1) {
+      //    newArray.push(month);
+      //    console.log('hidden: ' + month);
+      // }
+      // else {
+      //    newArray.splice(position,1);
+      //    console.log('unhidden: ' + month);
+      // }
 
-      //setSortedData(newArray);
+      // console.log('hidden months: ' + newArray);
+      // setHiddenMonths(newArray);
+
+      setHiddenMonths([1]);
    }
 
    return (
@@ -47,6 +63,7 @@ export default function App() {
 
         <FlatList
             data={sortedData}
+            extraData={hiddenMonths}
             style={allStyles.listContainer}
             renderItem={({ item }) => (
                displayNextEvent(item)
