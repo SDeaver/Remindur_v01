@@ -1,5 +1,3 @@
-import { flatten } from 'lodash';
-
 import { getCurrentMonth } from './DateFunctions';
 import { monthArray } from './MonthArray';
 import { testData } from './TestData';
@@ -14,9 +12,9 @@ export default function initData() {
       newInitArray[myEvent.dateMonth].push(myEvent);
    }
 
-
    // create an array of arrays, one for each month
-   testData.map(addToMonthArray);
+   // adding each event into the approrpiate month
+   testData.forEach(addToMonthArray);
 
    // re-order month array to start with current month
    while( newInitArray[0][0].key != currentMonth ) {
@@ -38,7 +36,7 @@ export default function initData() {
    }
 
    // flatten all month arrays into one array
-   let sortedArray = flatten(newInitArray);
+   let sortedArray = newInitArray.flat();
 
    return sortedArray;      
 }
