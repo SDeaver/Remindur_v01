@@ -24,7 +24,6 @@ export const allStyles = StyleSheet.create ({
       height:'80%',
       width: '80%',
       backgroundColor: colors.listBG,
-      // borderWidth: 3,
    },
    eventCard: {
       borderWidth: 1,
@@ -58,6 +57,15 @@ export const allStyles = StyleSheet.create ({
       flexDirection: 'row',
       justifyContent:'space-between',
    },
+   eventDisplayModal: {
+      flexGrow: 0,
+      height: '50%',
+      width: '80%',
+      borderWidth: 3,
+   },
+   eventDisplayContent: {
+      
+   }
 
 });
 

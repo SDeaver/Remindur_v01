@@ -1,8 +1,9 @@
-import { View, Text, Pressable, FlatList } from 'react-native';
+import { View, Text, Pressable, FlatList, Modal } from 'react-native';
 import { useState, useEffect } from 'react';
 
 import initData from './components/InitData';
 import EventCard from './components/EventCard';
+import EventDisplay from './components/EventDisplay';
 import MonthTitle from './components/MonthTitle';
 import YearBreak from './components/YearBreak';
 import { allStyles } from './styles/AllStyles';
@@ -13,8 +14,18 @@ export default function App() {
    const [sortedData, setSortedData] = useState(initData);
    const [hiddenMonths, setHiddenMonths] = useState([]);
    const [toggleToForceFlatListRender, setToggleToForceFlastListRender] = useState(true);
-
+   const [modalVisible, setModalVisible] = useState(false);
+   const [displayedEvent, setDisplayedEvent] = useState(null);
    
+
+   function modalOpen(displayEvent) {
+      console.log('modal open!');
+      console.log('press function!' + displayEvent.name);
+      setDisplayedEvent(displayEvent);
+      setModalVisible(true);
+   }
+   
+
    function displayNextEvent(item) {
 
       // check if hidden
@@ -24,7 +35,7 @@ export default function App() {
 
       // determine what kind of component to return
       if (item.name) {
-         return (<EventCard myEvent={item} />);
+         return (<EventCard myEvent={item} modalOpen={modalOpen} />);
          
       }
       else if (item.key === '---') {
@@ -59,7 +70,11 @@ export default function App() {
    return (
       <Pressable style={allStyles.mainContainer}>
 
-        <FlatList
+         <Modal style={allStyles.eventDisplayModal} visible={modalVisible} animationType='fade'>
+            <EventDisplay />
+         </Modal>
+
+         <FlatList
             data={sortedData}
             //extraData={hiddenMonths}
             style={allStyles.listContainer}
