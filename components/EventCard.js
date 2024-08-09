@@ -1,4 +1,5 @@
 import { Text, Pressable } from 'react-native';
+import { useState } from 'react';
 import { getMonthName } from './DateFunctions';
 
 import { allStyles } from '../styles/AllStyles';
@@ -13,11 +14,9 @@ export default function EventCard ( { myEvent, modalOpen }) {
    }
    
    return (
-      <Pressable style={allStyles.eventCard} onPressOut={pressFunction} >
+      <Pressable style={allStyles.eventCard} onPress={pressFunction}>
          <Text>{myEvent.name}</Text>
          <Text>{dateString}</Text>
-         {/* <Text/>
-         <Text>{myEvent.description}</Text> */}
       </Pressable>
    )
 

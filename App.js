@@ -19,10 +19,12 @@ export default function App() {
    
 
    function modalOpen(displayEvent) {
-      console.log('modal open!');
-      console.log('press function!' + displayEvent.name);
       setDisplayedEvent(displayEvent);
       setModalVisible(true);
+   }
+
+   function modalClose() {
+      setModalVisible(false);
    }
    
 
@@ -70,8 +72,10 @@ export default function App() {
    return (
       <Pressable style={allStyles.mainContainer}>
 
-         <Modal style={allStyles.eventDisplayModal} visible={modalVisible} animationType='fade'>
-            <EventDisplay />
+         <Modal visible={modalVisible} animationType='fade' transparent={true}>
+            <Pressable style={allStyles.modalContainer} onPressOut={modalClose}>
+               <EventDisplay myEvent={displayedEvent} modalClose={modalClose}/>
+            </Pressable>
          </Modal>
 
          <FlatList

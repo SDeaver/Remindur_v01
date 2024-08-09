@@ -57,14 +57,32 @@ export const allStyles = StyleSheet.create ({
       flexDirection: 'row',
       justifyContent:'space-between',
    },
-   eventDisplayModal: {
-      flexGrow: 0,
+   modalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100%',
+      backgroundColor: 'rgba(0,0,0,0.5)',
+   },
+   eventDisplayView: {
+      backgroundColor: 'ghostwhite',
+      justifyContent: 'space-around',
       height: '50%',
-      width: '80%',
+      width: '90%',
       borderWidth: 3,
    },
-   eventDisplayContent: {
-      
+   displayText: {
+      alignSelf: 'center',
+   },
+   closeButton: {
+      height: '10%',
+      width: '30%',
+      marginTop: 20,
+      alignSelf: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'white',
+      borderWidth: 1,
    }
 
 });
