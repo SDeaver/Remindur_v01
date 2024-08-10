@@ -24,7 +24,6 @@ export const allStyles = StyleSheet.create ({
       height:'80%',
       width: '80%',
       backgroundColor: colors.listBG,
-      // borderWidth: 3,
    },
    eventCard: {
       borderWidth: 1,
@@ -58,6 +57,33 @@ export const allStyles = StyleSheet.create ({
       flexDirection: 'row',
       justifyContent:'space-between',
    },
+   modalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100%',
+      backgroundColor: 'rgba(0,0,0,0.5)',
+   },
+   eventDisplayView: {
+      backgroundColor: 'ghostwhite',
+      justifyContent: 'space-around',
+      height: '50%',
+      width: '90%',
+      borderWidth: 3,
+   },
+   displayText: {
+      alignSelf: 'center',
+   },
+   closeButton: {
+      height: '10%',
+      width: '30%',
+      marginTop: 20,
+      alignSelf: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'white',
+      borderWidth: 1,
+   }
 
 });
 
